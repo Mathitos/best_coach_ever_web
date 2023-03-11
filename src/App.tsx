@@ -33,6 +33,18 @@ function App() {
           setProfile(res.data);
         })
         .catch((err) => console.log(err));
+
+      axios
+        .get(`https://www.googleapis.com/fitness/v1/users/me/dataSources`, {
+          headers: {
+            Authorization: `Bearer ${user.access_token}`,
+            Accept: "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
     }
   }, [user]);
 
