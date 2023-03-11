@@ -7,10 +7,12 @@ import {
 import axios from "axios";
 
 function App() {
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<TokenResponse>();
   const [profile, setProfile] = useState<any>();
 
   const login = useGoogleLogin({
+    scope:
+      "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/fitness.body.write https://www.googleapis.com/auth/fitness.nutrition.write https://www.googleapis.com/auth/fitness.body.read https://www.googleapis.com/auth/fitness.nutrition.read",
     onSuccess: (codeResponse) => setUser(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
   });
